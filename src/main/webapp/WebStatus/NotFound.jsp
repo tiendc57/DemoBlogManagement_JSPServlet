@@ -1,14 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Not Found</title>
 </head>
 <body>
-	<div>
-		<h1>pp</h1>
-	</div>
+	<h1>404</h1>
+	<h1>Page not found</h1>
 </body>
 </html>
