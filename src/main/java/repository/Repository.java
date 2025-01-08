@@ -22,6 +22,11 @@ public abstract class Repository {
 	}
 
 	protected Connection getOpenedSqlConnection() throws SQLException {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
 		Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
 		connection.setAutoCommit(false);
 		return connection;

@@ -1,11 +1,13 @@
-package model.entity;
+package data.entity;
+
+import java.util.UUID;
 
 public class Blog {
-	private int id;
+	private UUID id;
 	private String category;
 	private String title;
 	private String content;
-	private int authorId;
+	private UUID authorId;
 	private String createdAt;
 	private String updatedAt;
 
@@ -13,7 +15,7 @@ public class Blog {
 
 	}
 
-	public Blog(int id, String title, String content, int authorId, String createdAt, String updatedAt) {
+	public Blog(UUID id, String title, String content, UUID authorId, String createdAt, String updatedAt) {
 		this.id = id;
 		this.title = title;
 		this.content = content;
@@ -22,11 +24,11 @@ public class Blog {
 		this.updatedAt = updatedAt;
 	}
 
-	public int getId() {
+	public UUID getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 
@@ -46,11 +48,11 @@ public class Blog {
 		this.content = content;
 	}
 
-	public int getAuthorId() {
+	public UUID getAuthorId() {
 		return authorId;
 	}
 
-	public void setAuthorId(int authorId) {
+	public void setAuthorId(UUID authorId) {
 		this.authorId = authorId;
 	}
 

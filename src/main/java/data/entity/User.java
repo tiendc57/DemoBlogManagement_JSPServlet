@@ -1,7 +1,9 @@
-package model.entity;
+package data.entity;
+
+import java.util.UUID;
 
 public class User {
-	private int id;
+	private UUID id;
 	private String name;
 	private String username;
 	private String password;
@@ -11,7 +13,7 @@ public class User {
 
 	}
 
-	public User(int id, String name, String username, String password, String email) {
+	public User(UUID id, String name, String username, String password, String email) {
 		this.id = id;
 		this.name = name;
 		this.username = username;
@@ -19,11 +21,11 @@ public class User {
 		this.email = email;
 	}
 
-	public int getId() {
+	public UUID getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 

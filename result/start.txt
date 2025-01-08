@@ -1,0 +1,5 @@
+
+
+--run on server
+b1: Source -> Clean up
+b2: run -> "select tomcat"

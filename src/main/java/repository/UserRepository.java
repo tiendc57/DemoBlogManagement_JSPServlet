@@ -5,7 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import model.entity.User;
+import data.entity.User;
+
 
 public class UserRepository extends Repository{
 	public boolean validateUser(String username, String password) {
