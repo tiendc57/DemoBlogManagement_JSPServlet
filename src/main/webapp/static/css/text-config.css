@@ -1,0 +1,7 @@
+@charset "UTF-8";
+
+.card-text {
+    white-space: nowrap;
+    overflow: hidden;   
+    text-overflow: ellipsis;
+}

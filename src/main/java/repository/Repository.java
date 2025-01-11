@@ -14,6 +14,7 @@ public abstract class Repository {
 	private final String dbUrl;
 	private final String dbUser;
 	private final String dbPassword;
+	protected Connection jdbcConnection;
 
 	public Repository() {
 		this.dbUrl = ConnectionDBConfig.DB_URL;
@@ -32,21 +33,38 @@ public abstract class Repository {
 		return connection;
 	}
 
+	protected void connect() throws SQLException {
+        if (jdbcConnection == null || jdbcConnection.isClosed()) {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+                jdbcConnection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
+                jdbcConnection.setAutoCommit(false);
+            } catch (ClassNotFoundException e) {
+                throw new SQLException(e);
+            }
+        }
+    }
+
+    protected void disconnect() throws SQLException {
+        if (jdbcConnection != null && !jdbcConnection.isClosed()) {
+            jdbcConnection.close();
+        }
+    }
+
 	protected <T> List<Object> getSqlParameters(T entity) {
 		List<Object> parameters = new ArrayList<>();
-		Class<?> entityType = entity.getClass();
-		Field[] fields = entityType.getDeclaredFields();
+	    Field[] fields = entity.getClass().getDeclaredFields();
 
-		for (Field field : fields) {
-			try {
-				field.setAccessible(true);
-				Object value = field.get(entity);
-				parameters.add(value);
-			} catch (IllegalAccessException e) {
-				throw new RuntimeException("Failed to access field value", e);
-			}
-		}
-		return parameters;
+	    for (Field field : fields) {
+	        field.setAccessible(true);
+	        try {
+	            Object value = field.get(entity);
+	            parameters.add(value != null ? value : "");
+	        } catch (IllegalAccessException e) {
+	            System.err.println("Error accessing field: " + field.getName() + " - " + e.getMessage());
+	        }
+	    }
+	    return parameters;
 	}
 
 	protected PreparedStatement createPreparedStatement(Connection connection, String sql, List<Object> parameters)

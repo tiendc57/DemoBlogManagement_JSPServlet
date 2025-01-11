@@ -1,20 +1,18 @@
 package data.response;
 
-import java.util.UUID;
-
-public class BlogViewReponse {
-	private UUID id;
+public class BlogViewResponse {
+	private String id;
 	private String category;
 	private String title;
 	private String content;
-	private UUID authorId;
+	private String authorId;
 	private String createdAt;
 	private String updatedAt;
-	
-	public BlogViewReponse() {
+
+	public BlogViewResponse() {
 	}
-	
-	public BlogViewReponse(UUID id, String category, String title, String content, UUID authorId, String createdAt,
+
+	public BlogViewResponse(String id, String category, String title, String content, String authorId, String createdAt,
 			String updatedAt) {
 		super();
 		this.id = id;
@@ -26,11 +24,11 @@ public class BlogViewReponse {
 		this.updatedAt = updatedAt;
 	}
 
-	public UUID getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(UUID id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -58,11 +56,11 @@ public class BlogViewReponse {
 		this.content = content;
 	}
 
-	public UUID getAuthorId() {
+	public String getAuthorId() {
 		return authorId;
 	}
 
-	public void setAuthorId(UUID authorId) {
+	public void setAuthorId(String authorId) {
 		this.authorId = authorId;
 	}
 

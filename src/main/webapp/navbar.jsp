@@ -7,16 +7,37 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="./blog?action=all">Blog</a>
+          <a class="nav-link" href="<%= request.getContextPath() %>/blog?action=all">Blog</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./user">Account</a>
+          <a class="nav-link" href="<%= request.getContextPath() %>/user">Account</a>
         </li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      
+      <div>
+       <%
+	       String userId = (session != null) ? (String) session.getAttribute("userId") : null;
+		   if (userId == null) {
+		%>
+			<a href="<%= request.getContextPath() %>/auth?action=redirectLoginForm" style="text-decoration: none;">
+				<button type="button" class="btn btn-outline-primary">Login</button>
+			</a>
+			<a href="<%= request.getContextPath() %>/auth?action=redirectRegisterForm" style="text-decoration: none;">
+				<button type="button" class="btn btn-outline-primary">Register</button>
+			</a>
+		<%
+		    } else {
+		%>
+		<div class="d-flex">
+			<p class="text-white my-auto me-2">Welcome: <%= userId %></p>
+			<a href="<%= request.getContextPath() %>/auth?action=logout" style="text-decoration: none;">
+			    <button type="button" class="btn btn-outline-primary">Logout</button>
+		    </a>
+		</div>
+		<%        
+		    }
+		%>
+      </div>
     </div>
   </div>
 </nav>
