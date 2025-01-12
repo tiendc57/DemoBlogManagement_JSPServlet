@@ -6,9 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.UUID;
 
-import data.entity.Blog;
 import data.entity.User;
-import data.response.BlogViewResponse;
 import data.response.UserViewResponse;
 
 public class UserRepository extends Repository{
@@ -53,7 +51,7 @@ public class UserRepository extends Repository{
             return false;
         }
     }
-    
+
     public UserViewResponse getUserByUsername(String name) throws SQLException {
 		String query = "SELECT * FROM users WHERE username = ?";
 		UserViewResponse userViewResponse = null;
@@ -69,8 +67,8 @@ public class UserRepository extends Repository{
 		}
 		return userViewResponse;
 	}
-    
-    
+
+
     private User readEntity(ResultSet rs) throws SQLException {
         User entity = new User();
         entity.setId(rs.getString("id"));

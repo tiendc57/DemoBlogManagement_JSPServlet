@@ -52,7 +52,7 @@
 	        </div>
 	        <div class="mt-2">
 		        <button type="submit" class="btn btn-primary">Save</button>
-		        <a href="BlogList.jsp" class="btn btn-secondary">Cancel</a>
+		        <a href="<%= request.getContextPath() %>/blog?action=all" class="btn btn-secondary">Cancel</a>
 	        </div>
 	    </form>
 	</div>

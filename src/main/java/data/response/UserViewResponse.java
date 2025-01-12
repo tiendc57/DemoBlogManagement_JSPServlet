@@ -6,10 +6,10 @@ public class UserViewResponse {
 	private String password;
 	private String email;
 	private String name;
-	
+
 	public UserViewResponse() {
 	}
-	
+
 	public UserViewResponse(String id, String name, String username, String password, String email) {
 		super();
 		this.id = id;
@@ -18,7 +18,7 @@ public class UserViewResponse {
 		this.password = password;
 		this.email = email;
 	}
-	
+
 	public String getId() {
 		return id;
 	}
@@ -49,5 +49,5 @@ public class UserViewResponse {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 }

@@ -27,11 +27,11 @@ INSERT INTO users (id, name, username, password, email) VALUES
 (UUID(), 'Alice Johnson', 'alicej', 'password789', 'alice.johnson@example.com');
 
 INSERT INTO blogs (id, category, title, content, author_id, created_at) VALUES
-(UUID(), 'Technology', 'The Rise of AI', 'Content about AI...', 
+(UUID(), 'EDU', 'The Rise of AI', 'Content about AI...', 
     (SELECT id FROM users WHERE username = 'johndoe'), NOW()),
-(UUID(), 'Health', '10 Tips for a Healthy Life', 'Content about health tips...', 
+(UUID(), 'EDU', '10 Tips for a Healthy Life', 'Content about health tips...', 
     (SELECT id FROM users WHERE username = 'janesmith'), NOW()),
-(UUID(), 'Lifestyle', 'Traveling the World', 'Content about traveling...', 
+(UUID(), 'EDU', 'Traveling the World', 'Content about traveling...', 
     (SELECT id FROM users WHERE username = 'alicej'), NOW()),
-(UUID(), 'Education', 'The Importance of Learning', 'Content about education...', 
+(UUID(), 'SPORT', 'The Importance of Learning', 'Content about education...', 
     (SELECT id FROM users WHERE username = 'johndoe'), NOW());

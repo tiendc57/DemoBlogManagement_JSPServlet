@@ -2,10 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
-import java.util.UUID;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,9 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import data.entity.Blog;
 import data.entity.User;
-import data.response.BlogViewResponse;
 import data.response.UserViewResponse;
 import repository.UserRepository;
 
@@ -54,17 +49,17 @@ public class AuthController extends HttpServlet {
             case "logout":
             	HttpSession session = request.getSession(false);
             	session.removeAttribute("userId");
-            	request.getRequestDispatcher(request.getContextPath() + "index.jsp");
+            	response.sendRedirect(request.getContextPath() + "/index.jsp");
                 break;
             default:
-            	request.getRequestDispatcher(request.getContextPath() + "/webStatus/not-found.jsp");
+            	response.sendRedirect(request.getContextPath() + "/webStatus/not-found.jsp");
                 break;
             }
         } catch (Exception ex) {
         	throw new ServletException(ex);
 		}
     }
-	
+
 	private void handleLogin(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
 		String username = request.getParameter("username");
@@ -73,12 +68,12 @@ public class AuthController extends HttpServlet {
         if (userRepository.validateUser(username, password)) {
         	UserViewResponse userViewResponse = userRepository.getUserByUsername(username);
             session.setAttribute("userId", userViewResponse.getId());
-            response.sendRedirect(request.getContextPath() + "/blog/index.jsp?action=all");
+            response.sendRedirect(request.getContextPath() + "/blog?action=all");
         } else {
             response.sendRedirect(request.getContextPath() + "/auth?action=redirectLoginForm&error=1");
         }
     }
-	
+
 	private void handleRegister(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
 		User user = new User();
@@ -92,13 +87,13 @@ public class AuthController extends HttpServlet {
         }
         response.sendRedirect(request.getContextPath() + "/auth/login.jsp");
     }
-	
+
 	private void redirectLoginForm(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, ServletException, IOException {
     	request.getRequestDispatcher("/auth/login.jsp").forward(request, response);
 
     }
-	
+
 	private void redirectRegisterForm(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, ServletException, IOException {
     	request.getRequestDispatcher("/auth/register.jsp").forward(request, response);

@@ -1,19 +1,21 @@
 package data.entity;
 
+import java.time.LocalDateTime;
+
 public class Blog {
 	private String id; // UUID - varchar(36)
 	private String category;
 	private String title;
 	private String content;
 	private String authorId;
-	private String createdAt;
-	private String updatedAt;
+	private LocalDateTime createdAt;
+	private LocalDateTime updatedAt;
 
 	public Blog() {
 
 	}
 
-	public Blog(String id, String category, String title, String content, String authorId, String createdAt, String updatedAt) {
+	public Blog(String id, String category, String title, String content, String authorId, LocalDateTime createdAt, LocalDateTime updatedAt) {
 		this.id = id;
 		this.category = category;
 		this.title = title;
@@ -55,19 +57,19 @@ public class Blog {
 		this.authorId = authorId;
 	}
 
-	public String getCreatedAt() {
+	public LocalDateTime getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreatedAt(String createdAt) {
+	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
 
-	public String getUpdatedAt() {
+	public LocalDateTime getUpdatedAt() {
 		return updatedAt;
 	}
 
-	public void setUpdatedAt(String updatedAt) {
+	public void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
 	}
 
